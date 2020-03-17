@@ -38,6 +38,7 @@ app.use(passport.session());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json({ strict: true }));
 app.set("view engine", "ejs");
+//moment JS
 app.locals.moment = require('moment');
 //Passport Configuration
 passport.use(new LocalStrategy(User.authenticate()));
