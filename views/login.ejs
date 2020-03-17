@@ -1,0 +1,19 @@
+<%- include("partials/header"); %> 
+
+<div class="my-5 p-2 container">
+    <h1 class="text-center">Login </h1>
+    
+    <form  action="/login" class="" method="post" id="newEditForm">
+        <div class="form-group">
+            <label for="loginName" class="align-items-center">Username</label>
+            <input type="text" class="form-control" id="loginName" name="username" placeholder="username">
+        </div>
+        <div class="form-group">
+            <label for="loginPass">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="password">
+        </div>
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<%- include("partials/footer"); %> 

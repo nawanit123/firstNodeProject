@@ -1,0 +1,43 @@
+<%- include("../partials/header"); %>
+
+ <div class="container-fluid pt-5">
+
+    <section id="mainHead" class="pt-2 container   k">
+      <div class="jumbotron text-center mt-2">
+        <div class="">
+          <h1 class="">Welcome to the YelpCamp</h1>
+          <p class="lead">View our hand-picked camprounds from all of the world</p>
+          <p class="lead">
+            <a href="/campgrounds/new" class="btn btn-info btn-lg"
+              >Add new Campground</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mainContent">
+      <div class="row my-4">
+        <%campgrounds.reverse().forEach(element => {%>
+        <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
+            <div class="card border-0 m-0 mb-4" style="width:18rem">
+              <img class="card-img img-fluid" src="<%=element.image  %> " alt="Not Loaded" />
+              
+              <div class="card-body border border-primary">
+                  <p class="lead card-title">
+                      <h4><%= element.name %></h4>
+                    </p>
+                    <p class="lead card-text">
+                      <%= element.description.substring(0,30) %>... 
+                    </p>
+                      <a href="/campgrounds/<%= element._id %> " class="btn btn-info">More Info!</a>
+                 
+              </div>
+            </div>
+        </div>
+        <% }); %>
+      </div>
+      <a href="/">Go Back!!</a>
+      </div>
+    </section>
+<%- include("../partials/footer"); %>

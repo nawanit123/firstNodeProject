@@ -1,0 +1,13 @@
+<%- include("partials/header"); %>
+	<div class="my-5 p-2 container">
+		<h1 class="text-center">Sign Up!!</h1>
+		<form action="/register" id="newEditForm" method="post" name="newEditForm">
+			<div class="form-group">
+				<label for="regName">Username</label> <input class="form-control" id="regName" name="username" placeholder="username" type="text">
+			</div>
+			<div class="form-group">
+				<label for="regPass">Password</label> <input class="form-control" id="regPass" name="password" placeholder="password" type="password">
+			</div><button type="submit">Sign Up</button>
+		</form>
+	</div>
+<%- include("partials/footer"); %>
