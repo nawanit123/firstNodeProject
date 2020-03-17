@@ -9,6 +9,7 @@ This is my first complete Node Project based of Udemy course "Web Development Bo
   5. Error handling with bootstrap styled flash messages.
   6. Implemented async/await . Not all routes are up to date with it as I was not familiar with them when I started working on the project.
       Will try to replace the routes which uses callbacks with them in the near future.
+  7. MongoDB used as the database with multiple collections.
 
 **Features to Add in the future**
   1. Google Maps Api Integration
