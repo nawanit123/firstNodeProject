@@ -3,10 +3,22 @@ const Comment=require("./comment");
 
 //Schema Set-up
 const campgroundSchema = new mongoose.Schema({
-    name:String,
-    image:String,
-    price:String,
-    description:String,
+    name:{
+          type:String,
+          required:true
+   },
+    image:{
+            type:String,
+            required:true
+   },
+    price:{
+            type:String,
+            required:true
+   },
+    description:{
+                  type:String,
+                  required:true
+    },
     createdAt: { type: Date, default: Date.now },
     author:{
        id:{
