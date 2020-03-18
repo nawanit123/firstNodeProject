@@ -9,7 +9,7 @@ const express   = require("express"),
   methodOverride = require("method-override"),
   seedDB = require("./seedDb"),
   flash         =   require("connect-flash"),
-  port = 3000;
+  port = process.env.PORT||3000;
 //requiring routes
 const campgroundRoutes = require("./routes/campgrounds"),
          commentRoutes = require("./routes/comments"),
