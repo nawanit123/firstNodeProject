@@ -23,7 +23,7 @@ router.post("/register",async(req,res)=>{
         let user= new User({username:req.body.username});
         await User.register(user,req.body.password);
         passport.authenticate("local")(req,res,()=>{
-            req.flash("success","Successfully created User!!!");
+            req.flash("success","Welcome to Yelpcamp "+req.user.username);
             res.redirect("/campgrounds");
         })        
     }catch(err){

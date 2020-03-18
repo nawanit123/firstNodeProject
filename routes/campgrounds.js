@@ -5,6 +5,7 @@ const Campground = require("../models/campground"),
 
 //RETRIEVE INDEX-campgrounds page
 router.get("/", (req, res) => {
+  
   //Get all campgrounds from DB
   Campground.find({}, (err, allCampgrounds) => {
     if (err) {
