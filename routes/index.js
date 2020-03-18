@@ -22,8 +22,8 @@ router.post("/register",async(req,res)=>{
     try{
         let user= new User({username:req.body.username});
         await User.register(user,req.body.password);
-        passport.authenticate("local")(req,res,()=>{
-            req.flash("success","Welcome to Yelpcamp "+req.user.username);
+        await passport.authenticate("local")(req,res,()=>{
+            req.flash("success","Welcome to YelpCamp "+req.user.username);
             res.redirect("/campgrounds");
         })        
     }catch(err){
@@ -38,15 +38,20 @@ router.get("/login",(req,res)=>{
     res.render("login");
 });
 //Log In logic handling
-router.post("/login",passport.authenticate("local",
-{
-    successRedirect:"/campgrounds",
-    failureRedirect:"/login",
-    successFlash: true,            
-    failureFlash: true,
-    failureFlash: 'Invalid username or passwerd.'
-}),(req,res)=>{
+router.post("/login",async(req,res)=>{
+    try {
+       await passport.authenticate("local")(req,res,()=>
+        {
+            let uName=req.user.username;
+            req.flash("success","Welcome to YelpCamp "+uName.charAt(0).toUpperCase()+uName.slice(1));
+            res.redirect("/campgrounds");
+        });  
+    } catch (error) {
+        req.flash("error",error.message);
+        res.redirect("/register");
+    }
 });
+
 
 //log out route
 router.get("/logout",(req,res)=>{

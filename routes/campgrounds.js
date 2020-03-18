@@ -5,7 +5,6 @@ const Campground = require("../models/campground"),
 
 //RETRIEVE INDEX-campgrounds page
 router.get("/", (req, res) => {
-  
   //Get all campgrounds from DB
   Campground.find({}, (err, allCampgrounds) => {
     if (err) {
@@ -46,6 +45,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      req.flash("success","Successfully created Campgrond!!");
       res.redirect("/campgrounds");
     }
   });
@@ -76,10 +76,11 @@ router.get("/:id/edit",middleware.checkCampgroundOwnership,async(req,res)=>{
 router.put("/:id",middleware.checkCampgroundOwnership,async(req,res)=>{
   try {
       let updatedCampground = await Campground.findByIdAndUpdate(req.params.id,req.body.campground);
+      req.flash("success","Successfully Edited Campground");
       res.redirect(`/campgrounds/${updatedCampground.id}`);
     
   } catch (error) {
-    console.log(err);
+    req.flash("error",error);
     res.redirect("/campgrounds");
   }
 });
@@ -89,9 +90,10 @@ router.delete("/:id",middleware.checkCampgroundOwnership,async(req,res)=>{
   try {
     let foundCampground = await Campground.findById(req.params.id);
     await foundCampground.remove();
+    req.flash("error","Successfully deleted Campground!");
     res.redirect("/campgrounds");
   } catch (error) {
-    console.log(error);
+    req.flash("error",error);
     res.redirect("/campgrounds");
   }
 });
