@@ -44,7 +44,6 @@ router.post("/login",passport.authenticate("local",
     failureRedirect:"/login",
     successFlash: true,            
     failureFlash: true,
-    successFlash: 'Succesfu1!',
     failureFlash: 'Invalid username or passwerd.'
 }),(req,res)=>{
 });
