@@ -4,18 +4,33 @@ const Campground = require("../models/campground"),
       middleware =require("../middleware");
 
 //RETRIEVE INDEX-campgrounds page
-router.get("/", (req, res) => {
-  //Get all campgrounds from DB
-  Campground.find({}, (err, allCampgrounds) => {
-    if (err) {
-      req.flash("error","Cannot find Campground!!!!");
-    } else {
-      res.render("campgrounds/index", {
-        campgrounds: allCampgrounds
-      });
+router.get("/", async(req, res) => {
+  if (req.query.search) {
+    try {
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      let allCampgrounds = await Campground.find({name:regex});
+      if(allCampgrounds.length<1){
+        throw "No Campgrounds match that query, Try again!";
+      }
+      res.render("campgrounds/index",{campgrounds:allCampgrounds});
+    } catch (error) {
+      req.flash("error",error);
+      res.redirect("/campgrounds");
     }
-  });
-  // res.render(`campgrounds`,{campgrounds:campgrounds});
+  } else {
+    //Get all campgrounds from DB
+    Campground.find({}, (err, allCampgrounds) => {
+      if (err) {
+        req.flash("error","Cannot find Campground!!!!");
+        req.redirect("back");
+      } else {
+        res.render("campgrounds/index", {
+          campgrounds: allCampgrounds,
+        });
+      }
+    });
+  }
+  
 });
 
 //NEW Campground form
@@ -97,4 +112,7 @@ router.delete("/:id",middleware.checkCampgroundOwnership,async(req,res)=>{
     res.redirect("/campgrounds");
   }
 });
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 module.exports = router;
