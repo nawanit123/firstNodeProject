@@ -25,7 +25,7 @@ router.post("/register",async(req,res)=>{
         await passport.authenticate("local")(req,res,()=>{
             req.flash("success","Welcome to YelpCamp "+req.user.username);
             res.redirect("/campgrounds");
-        })        
+        });        
     }catch(err){
         console.log(err);
         req.flash("error",err.message);
@@ -38,18 +38,13 @@ router.get("/login",(req,res)=>{
     res.render("login");
 });
 //Log In logic handling
-router.post("/login",async(req,res)=>{
-    try {
-       await passport.authenticate("local")(req,res,()=>
-        {
-            let uName=req.user.username;
-            req.flash("success","Welcome to YelpCamp "+uName.charAt(0).toUpperCase()+uName.slice(1));
-            res.redirect("/campgrounds");
-        });  
-    } catch (error) {
-        req.flash("error",error.message);
-        res.redirect("/register");
-    }
+router.post("/login",async(req,res,next)=>{
+        passport.authenticate("local",{
+            successRedirect:"/campgrounds",
+            failureRedirect:"/login",
+            failureFlash:true,
+            failureFlash:"Invalid id/pass combinations"
+        })(req,res,next);
 });
 
 
