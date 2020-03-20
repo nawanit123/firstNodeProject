@@ -12,8 +12,6 @@ html,body{
     padding:1.1rem;
 }
 
-
-
 .overflowPara{
     /* These are technically the same, but use both */
   overflow-wrap: break-word;
