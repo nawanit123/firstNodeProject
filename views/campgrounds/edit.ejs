@@ -4,7 +4,7 @@
         <h1 class="display-4 text-center pt-5">Edit <%= campground.name%>!!</h1>
     </section>
     
-    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="post" class="p-2 " id="newEditForm">
+    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="post" class="p-2 newEditForm">
         <div class="d-flex flex-column">
             <div class="form-group">
                 <input class="form-control" type="text" name="campground[name]"  value="<%= campground.name %> ">

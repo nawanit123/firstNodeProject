@@ -5,7 +5,7 @@
     </section>
     
     
-    <form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="post" class="p-2 d-flex flex-column" id="newEditForm">
+    <form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="post" class="p-2 d-flex flex-column newEditForm">
         <div class="form-group">
             <textarea class="form-control" name="comment[text]"><%= comment.text %> </textarea>
         </div>
