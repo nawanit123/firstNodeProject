@@ -1,16 +1,54 @@
-html,body{
-    height: 100%;
-    line-height: 1.2rem;
+body{
+    width: 100%;
+    margin: 0;
 }
-/* .form-control,.formStyle {
-    width: 40%;
-    margin: 0 auto;
-} */
+#container{
+    display: grid;
+    grid-template:10% 45% 45% / 1fr 5fr 1fr;
+
+}
+
+nav#navbar{
+    color: white;
+    padding:0;
+    /* grid-area: 1/1/1/span 3; */
+    background-color: black;
+    display: flex;
+    /* display: grid;
+    grid-template: 1fr/2fr 7fr; */
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+nav ul#header{
+    /* display: grid;
+    grid-template:1fr/1fr 1fr 1fr; */
+}
+.logo{
+    /* margin-right:60%; */
+}
+.navbar-item1{
+    margin-left:1rem;
+}
+.navbar-item2{
+    margin-left:1rem;
+}
+.navbar-item3{
+    margin-left:1rem;
+}
+.navbar-item4{
+    margin-left:1rem;
+    padding-right: 1rem;
+}
+li>a {
+    color:white;
+    text-decoration: none;
+}
 
 
-.card-body{
-    padding:1.1rem;
-}
 
 .overflowPara{
     /* These are technically the same, but use both */
@@ -30,7 +68,7 @@ html,body{
   hyphens: auto;
 }
 
-@media(min-width:992px){
+/* @media(min-width:992px){
     .newEditForm{
         width: 50%;
         margin: 0 auto;
@@ -41,4 +79,4 @@ html,body{
         width: 70%;
         margin: 0 auto;
     }
-}
+} */
