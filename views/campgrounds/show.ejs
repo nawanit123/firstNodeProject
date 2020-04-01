@@ -16,9 +16,9 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="m-0 p-0 lead order-2">$<%=campground.price %>/night</p>
-                            <h5 class="card-title display-4 order-1">
+                            <h1 class="card-title order-1">
                                 <a href="#" class="badge badge-success"><%= campground.name%> </a>
-                            </h5>
+                            </h1>
                         </div>
                         <p class="card-text overflowPara"> <%= campground.description %> </p>
                         <footer class="blockquote-footer col-md-5"><em>Submitted by <%=campground.author.username  %>,, <%= moment(campground.createdAt).fromNow() %></em>
@@ -37,7 +37,7 @@
            
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center m-0 p-0">
-                            <h5 class="pl-2">Comments</h5>
+                            <h2 class="pl-2">Comments</h2>
                             <a class="btn btn-success btn-lg m-0" href="/campgrounds/<%= campground._id %>/comments/new""> Add Comment</a>
                         </div>
                         <% campground.comments.forEach(comment=>{ %>
