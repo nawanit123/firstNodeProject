@@ -10,6 +10,7 @@ const express = require('express'),
   seedDB = require('./seedDb'),
   flash = require('connect-flash'),
   port = process.env.PORT || 3000;
+require('dotenv').config();
 //requiring routes
 const campgroundRoutes = require('./routes/campgrounds'),
   commentRoutes = require('./routes/comments'),
@@ -19,7 +20,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb://localhost:27017/yelp_camp');
+mongoose.connect(process.env.DATABASEURL);
 
 //
 app.use(
