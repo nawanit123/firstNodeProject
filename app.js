@@ -10,7 +10,6 @@ const express = require('express'),
   seedDB = require('./seedDb'),
   flash = require('connect-flash'),
   port = process.env.PORT || 3000;
-require('dotenv').config();
 //requiring routes
 const campgroundRoutes = require('./routes/campgrounds'),
   commentRoutes = require('./routes/comments'),
